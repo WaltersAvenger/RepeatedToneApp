@@ -7,13 +7,13 @@ C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\Repeat
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.csproj.CoreCompileInputs.cache
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.exe
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.pdb
-C:\Users\Matth\Documents\GitHub\RepeatedToneApp\bin\Debug\RepeatedToneApp.exe.config
-C:\Users\Matth\Documents\GitHub\RepeatedToneApp\bin\Debug\RepeatedToneApp.exe
-C:\Users\Matth\Documents\GitHub\RepeatedToneApp\bin\Debug\RepeatedToneApp.pdb
-C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.csprojAssemblyReference.cache
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\bin\Debug\Repeated Tone.exe.config
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\bin\Debug\Repeated Tone.exe
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\bin\Debug\Repeated Tone.pdb
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.Properties.Resources.resources
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.Resource.resources
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.csproj.GenerateResource.cache
 C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.csproj.CoreCompileInputs.cache
-C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.exe
-C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.pdb
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\Repeated Tone.exe
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\Repeated Tone.pdb
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\obj\Debug\RepeatedToneApp.csprojAssemblyReference.cache
