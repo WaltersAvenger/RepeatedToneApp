@@ -1,0 +1,9 @@
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\bin\Debug\RepeatedToneApp.exe.config
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\bin\Debug\RepeatedToneApp.exe
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\bin\Debug\RepeatedToneApp.pdb
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.Properties.Resources.resources
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.Resource.resources
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.csproj.GenerateResource.cache
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.csproj.CoreCompileInputs.cache
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.exe
+C:\Users\Matth\Documents\GitHub\RepeatedToneApp\RepeatedToneApp\obj\Debug\RepeatedToneApp.pdb
