@@ -7,7 +7,7 @@
     <ProjectGuid>{CAF1E273-5F67-4F53-B4D7-BFBEC2EEC083}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>RepeatedToneApp</RootNamespace>
-    <AssemblyName>Repeated Tone</AssemblyName>
+    <AssemblyName>RepeatedTone</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>speakerDarkMode.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
