@@ -15,10 +15,10 @@ namespace RepeatedToneApp
         static AutoResetEvent _signalBeep;
         static SoundPlayer player;
 
-        public BackgroundBeep(int frequency)
+        public BackgroundBeep(Int32 frequency, Int32 amplitude)
         {
             player = new SoundPlayer();
-            player.SoundLocation = GenerateWAV(frequency);
+            player.SoundLocation = GenerateWAV(frequency, amplitude);
             _signalBeep = new AutoResetEvent(false);
             _beepThread = new Thread(() =>
             {
@@ -42,7 +42,7 @@ namespace RepeatedToneApp
             player.Stop();
         }
 
-        private string GenerateWAV(double naturalFrequency)
+        private string GenerateWAV(double naturalFrequency, Int32 amplitude)
         {
             string path = "test.wav";
             FileStream stream = new FileStream(path, FileMode.Create);
@@ -76,7 +76,7 @@ namespace RepeatedToneApp
             writer.Write(bitsPerSample);
             writer.Write(data);
             writer.Write(dataChunkSize);
-            double ampl = 10000;
+            double ampl = 2500 * amplitude;
             for (int i = 0; i < samples; i++)
             {
                 double t = (double)i / (double)samplesPerSecond;

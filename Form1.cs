@@ -31,8 +31,6 @@ namespace RepeatedToneApp
         private bool shouldStop;
         private Task tskGenerateBeep;
         private BackgroundBeep backgroundBeep;
-        private CancellationTokenSource tokenSource;
-        private CancellationToken token;
 
 
         public Form1()
@@ -60,10 +58,12 @@ namespace RepeatedToneApp
 
             {
                 this.notifyIcon.Icon = RepeatedToneApp.Resource.speakerDarkMode;
+                this.Icon = RepeatedToneApp.Resource.speakerDarkMode;
             }
             else
             {
                 this.notifyIcon.Icon = RepeatedToneApp.Resource.speakerLightMode;
+                this.Icon = RepeatedToneApp.Resource.speakerLightMode;
             }
 
             // The ContextMenu property sets the menu that will
@@ -74,9 +74,11 @@ namespace RepeatedToneApp
             // in a tooltip, when the mouse hovers over the systray icon.
             notifyIcon.Text = "Repeated Tone";
             notifyIcon.Visible = true;
+            this.Resize += new System.EventHandler(this.frmMain_Resize);
 
             // Handle the DoubleClick event to activate the form.
             notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 
             //Initialize objects
             this.textBoxInterval = new System.Windows.Forms.TextBox();
@@ -154,16 +156,16 @@ namespace RepeatedToneApp
             // The Minimum property sets the value of the track bar when
             // the slider is all the way to the right.
             trackBarInterval.Minimum = 0;
-            trackBarFrequency.Minimum = 47;
+            trackBarFrequency.Minimum = 10;
             trackBarAmplitude.Minimum = 0;
             trackBarDuration.Minimum = 1;
 
 
             // The Maximum property sets the value of the track bar when
             // the slider is all the way to the right.
-            trackBarInterval.Maximum = 30;
-            trackBarFrequency.Maximum = 12000;
-            trackBarAmplitude.Maximum = 100;
+            trackBarInterval.Maximum = 1800;
+            trackBarFrequency.Maximum = 24000;
+            trackBarAmplitude.Maximum = 20;
             trackBarDuration.Maximum = 30;
 
 
@@ -171,22 +173,29 @@ namespace RepeatedToneApp
             // are between each tick-mark.
             trackBarInterval.TickFrequency = 1;
             trackBarFrequency.TickFrequency = 10;
-            trackBarAmplitude.TickFrequency = 5;
+            trackBarAmplitude.TickFrequency = 1;
             trackBarDuration.TickFrequency = 1;
 
             // The LargeChange property sets how many positions to move
             // if the bar is clicked on either side of the slider.
             trackBarInterval.LargeChange = 5;
             trackBarFrequency.LargeChange = 100;
-            trackBarAmplitude.LargeChange = 10;
+            trackBarAmplitude.LargeChange = 2;
             trackBarDuration.LargeChange = 5;
 
             // The SmallChange property sets how many positions to move
             // if the keyboard arrows are used to move the slider.
             trackBarInterval.SmallChange = 1;
             trackBarFrequency.SmallChange = 10;
-            trackBarAmplitude.SmallChange = 5;
+            trackBarAmplitude.SmallChange = 1;
             trackBarDuration.SmallChange = 1;
+
+            // Defaulting the starting value
+            trackBarInterval.Value = 5;
+            trackBarFrequency.Value = 500;
+            trackBarAmplitude.Value = 10;
+            trackBarDuration.Value = 5;
+            SetAllTextboxes();
 
             // Set up how the form should be displayed and add the controls to the form.
             this.ClientSize = new System.Drawing.Size(296, 282);
@@ -212,9 +221,9 @@ namespace RepeatedToneApp
                         delFrequency = trackBarFrequency.Value;
                         delAmplitude = trackBarAmplitude.Value;
                     }));
-                    backgroundBeep = new BackgroundBeep(delFrequency);
+                    backgroundBeep = new BackgroundBeep(delFrequency, delAmplitude);
                     backgroundBeep.Beep();
-                    VolumeChange.SetApplicationVolume(Application.ProductName, delAmplitude);
+                    //VolumeChange.SetApplicationVolume(Application.ProductName, delAmplitude);
 
                     this.Invoke(new MethodInvoker(delegate ()
                     {
@@ -239,6 +248,15 @@ namespace RepeatedToneApp
             {
                 shouldStop = false;
             }
+        }
+        
+        private void SetAllTextboxes()
+        {
+            // Display the trackbar value in the text box.
+            textBoxInterval.Text = "" + trackBarInterval.Value;
+            textBoxFrequency.Text = "" + trackBarFrequency.Value;
+            textBoxAmplitude.Text = "" + trackBarAmplitude.Value;
+            textBoxDuration.Text = "" + trackBarDuration.Value;
         }
 
         private void trackBarInterval_Scroll(object sender, System.EventArgs e)
@@ -384,11 +402,13 @@ namespace RepeatedToneApp
                 backgroundBeep.StopBeep();
             }
             shouldStop = true;
+            this.btnStart.Enabled = true;
         }
         private void buttonStart_Click(object sender, System.EventArgs e)
         {
             Action a = () => GenerateBeep();
             tskGenerateBeep = Task.Factory.StartNew(a);
+            this.btnStart.Enabled = false;
         }
         public Int32 GetTheme()
         {
@@ -403,10 +423,36 @@ namespace RepeatedToneApp
 
             // Set the WindowState to normal if the form is minimized.
             if (this.WindowState == FormWindowState.Minimized)
-                this.WindowState = FormWindowState.Normal;
-
+            { 
+            this.WindowState = FormWindowState.Normal;
+            }
+            this.Show();
             // Activate the form.
             this.Activate();
+        }
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                this.notifyIcon.Visible = true;
+                this.notifyIcon.ShowBalloonTip(500);
+                this.Hide();
+            }
+
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                this.notifyIcon.Visible = false;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.notifyIcon.Visible = true;
+                this.Hide();
+                e.Cancel = true;
+            }
         }
 
         private void menuItem_Click(object Sender, EventArgs e)
